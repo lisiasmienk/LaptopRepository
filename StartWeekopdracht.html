@@ -16,15 +16,19 @@
 	<script>
 		var rij = [0,0,0,0,0,0,0]; //want tellen vanaf 0
 		var color = 'yellow';
-		function latenvallen(kolom){
-			if (color == 'red') {
-				color = 'yellow';
+		function latenvallen(kolom) {
+			if (rij[kolom] < 6) {
+				if (color == 'red') {
+					color = 'yellow';
+				} else {
+					color = 'red';
+				}
+				document.getElementById("vakje" + kolom + "" + rij[kolom]).style.backgroundColor = color;
+				gewonnen(color, kolom, rij[kolom])
+				rij[kolom]++;
 			} else {
-				color = 'red';
+				alert("Deze kolom is al vol, selecteer een andere kolom.");
             }
-			document.getElementById("vakje"+kolom+""+rij[kolom]).style.backgroundColor =  color;
-            gewonnen(color, kolom, rij[kolom])
-			rij[kolom]++;
 		}
 
 		function gewonnen(color, kolom, rij) {
