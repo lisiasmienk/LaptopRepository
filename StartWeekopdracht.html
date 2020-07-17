@@ -28,14 +28,9 @@
 		}
 
 		function gewonnen(color, kolom, rij) {
-			var vertikaal = aantalVertikaal(color, kolom, rij);
-			console.log("vertikaal is " + vertikaal);
-			var horizontaal = aantalHorizontaal(color, kolom, rij);
-			console.log("horizontaal is " + horizontaal);
-            var diagomhoog = aantalDiagonaalOmhoog(color, kolom, rij);
-            console.log("diagonaal omhoog is " + diagomhoog);
-            var diagomlaag = aantalDiagonaalOmlaag(color, kolom, rij);
-            console.log("diagonaal omlaag is " + diagomlaag);
+			if (aantalVertikaal(color, kolom, rij) == 4 || aantalHorizontaal(color, kolom, rij) == 4 || aantalDiagonaalOmhoog(color, kolom, rij) == 4 || aantalDiagonaalOmlaag(color, kolom, rij) == 4) {
+				alert("Je hebt 4 op een rij gescoord!");
+			}
 		}
 
 		function aantalVertikaal(color, kolom, rij) {
