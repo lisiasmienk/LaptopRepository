@@ -34,15 +34,13 @@
 			console.log("horizontaal is " + horizontaal);
             var diagomhoog = aantalDiagonaalOmhoog(color, kolom, rij);
             console.log("diagonaal omhoog is " + diagomhoog);
-
-			//Diagonaal
+            var diagomlaag = aantalDiagonaalOmlaag(color, kolom, rij);
+            console.log("diagonaal omlaag is " + diagomlaag);
 		}
 
 		function aantalVertikaal(color, kolom, rij) {
             var row = rij - 1;
             var teller = 1;
-            //console.log(kolom + " " + rij + " " + color);
-            //Vertikaal
             while (row >= 0 && document.getElementById("vakje" + kolom + row).style.backgroundColor == color) {
                 teller++;
                 row--;
@@ -80,6 +78,25 @@
                 teller++;
 				col++;
 				row++;
+            }
+            return teller;
+		}
+
+        function aantalDiagonaalOmlaag(color, kolom, rij) {
+            var col = kolom - 1;
+            var row = rij + 1;
+            var teller = 1;
+            while (col >= 0 && row < 6 && document.getElementById("vakje" + col + row).style.backgroundColor == color) {
+                teller++;
+                col--;
+                row++;
+            }
+            col = kolom + 1;
+            row = rij - 1;
+            while (col < 7 && row >= 0 && document.getElementById("vakje" + col + row).style.backgroundColor == color) {
+                teller++;
+                col++;
+                row--;
             }
             return teller;
         }
