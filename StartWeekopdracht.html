@@ -16,24 +16,31 @@
 	<script>
 		var rij = [0,0,0,0,0,0,0]; //want tellen vanaf 0
 		var color = 'yellow';
+		var spelActief = true;
 		function latenvallen(kolom) {
-			if (rij[kolom] < 6) {
-				if (color == 'red') {
-					color = 'yellow';
+			console.log(spelActief);
+			if (spelActief) {
+				if (spelActief && rij[kolom] < 6) {
+					if (color == 'red') {
+						color = 'yellow';
+					} else {
+						color = 'red';
+					}
+					document.getElementById("vakje" + kolom + "" + rij[kolom]).style.backgroundColor = color;
+					gewonnen(color, kolom, rij[kolom])
+					rij[kolom]++;
 				} else {
-					color = 'red';
+					alert("Deze kolom is al vol, selecteer een andere kolom.");
 				}
-				document.getElementById("vakje" + kolom + "" + rij[kolom]).style.backgroundColor = color;
-				gewonnen(color, kolom, rij[kolom])
-				rij[kolom]++;
 			} else {
-				alert("Deze kolom is al vol, selecteer een andere kolom.");
+				alert("Als je verder wilt spelen, moet je een nieuwe spel starten.")
             }
 		}
 
 		function gewonnen(color, kolom, rij) {
 			if (aantalVertikaal(color, kolom, rij) == 4 || aantalHorizontaal(color, kolom, rij) == 4 || aantalDiagonaalOmhoog(color, kolom, rij) == 4 || aantalDiagonaalOmlaag(color, kolom, rij) == 4) {
-				alert("Je hebt 4 op een rij gescoord!");
+				document.getElementById("winst").innerText = "Je hebt gewonnen!";
+                spelActief = false;
 			}
 		}
 
@@ -165,5 +172,7 @@
 			<td id=vakje60 onclick=latenvallen(6)></td>
 		</tr>
 	</table>
+
+	<h2 id="winst"></h2>
 </body>
 </html>
