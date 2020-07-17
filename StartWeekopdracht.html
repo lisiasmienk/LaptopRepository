@@ -1,0 +1,153 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vier op 'n rij!</title>
+	<style>
+		td{
+			border:2px solid red;
+			width: 50px;
+			height: 50px;
+			color: white;
+		}
+	</style>
+	<script>
+		var rij = [0,0,0,0,0,0,0]; //want tellen vanaf 0
+		var color = 'yellow';
+		function latenvallen(kolom){
+			if (color == 'red') {
+				color = 'yellow';
+			} else {
+				color = 'red';
+            }
+			document.getElementById("vakje"+kolom+""+rij[kolom]).style.backgroundColor =  color;
+            gewonnen(color, kolom, rij[kolom])
+			rij[kolom]++;
+		}
+
+		function gewonnen(color, kolom, rij) {
+			var vertikaal = aantalVertikaal(color, kolom, rij);
+			console.log("vertikaal is " + vertikaal);
+			var horizontaal = aantalHorizontaal(color, kolom, rij);
+			console.log("horizontaal is " + horizontaal);
+            var diagomhoog = aantalDiagonaalOmhoog(color, kolom, rij);
+            console.log("diagonaal omhoog is " + diagomhoog);
+
+			//Diagonaal
+		}
+
+		function aantalVertikaal(color, kolom, rij) {
+            var row = rij - 1;
+            var teller = 1;
+            //console.log(kolom + " " + rij + " " + color);
+            //Vertikaal
+            while (row >= 0 && document.getElementById("vakje" + kolom + row).style.backgroundColor == color) {
+                teller++;
+                row--;
+            }
+			return teller;
+		}
+
+		function aantalHorizontaal(color, kolom, rij) {
+            var col = kolom - 1;
+            var teller = 1;
+            while (col >= 0 && document.getElementById("vakje" + col + rij).style.backgroundColor == color) {
+                teller++;
+                col--;
+			}
+			col = kolom + 1;
+            while (col < 7 && document.getElementById("vakje" + col + rij).style.backgroundColor == color) {
+                teller++;
+                col++;
+            }
+            return teller;
+		}
+
+        function aantalDiagonaalOmhoog(color, kolom, rij) {
+			var col = kolom - 1;
+			var row = rij - 1;
+            var teller = 1;
+            while (col >= 0 && row >= 0 && document.getElementById("vakje" + col + row).style.backgroundColor == color) {
+                teller++;
+				col--;
+				row--;
+            }
+			col = kolom + 1;
+			row = rij + 1;
+            while (col < 7 && row<6 && document.getElementById("vakje" + col + row).style.backgroundColor == color) {
+                teller++;
+				col++;
+				row++;
+            }
+            return teller;
+        }
+	</script>
+</head>
+
+<body>
+	<h1>
+		Vier op 'n rij!
+	</h1>
+	<p>
+		Startspeler begint met rood.
+	</p>
+	<table border=1>
+		<tr>
+			<td id=vakje05 onclick=latenvallen(0)></td>
+			<td id=vakje15 onclick=latenvallen(1)></td>
+			<td id=vakje25 onclick=latenvallen(2)></td>
+			<td id=vakje35 onclick=latenvallen(3)></td>
+			<td id=vakje45 onclick=latenvallen(4)></td>
+			<td id=vakje55 onclick=latenvallen(5)></td>
+			<td id=vakje65 onclick=latenvallen(6)></td>
+		</tr>
+		<tr>
+			<td id=vakje04 onclick=latenvallen(0)></td>
+			<td id=vakje14 onclick=latenvallen(1)></td>
+			<td id=vakje24 onclick=latenvallen(2)></td>
+			<td id=vakje34 onclick=latenvallen(3)></td>
+			<td id=vakje44 onclick=latenvallen(4)></td>
+			<td id=vakje54 onclick=latenvallen(5)></td>
+			<td id=vakje64 onclick=latenvallen(6)></td>
+		</tr>
+		<tr>
+			<td id=vakje03 onclick=latenvallen(0)></td>
+			<td id=vakje13 onclick=latenvallen(1)></td>
+			<td id=vakje23 onclick=latenvallen(2)></td>
+			<td id=vakje33 onclick=latenvallen(3)></td>
+			<td id=vakje43 onclick=latenvallen(4)></td>
+			<td id=vakje53 onclick=latenvallen(5)></td>
+			<td id=vakje63 onclick=latenvallen(6)></td>
+		</tr>
+		<tr>
+			<td id=vakje02 onclick=latenvallen(0)></td>
+			<td id=vakje12 onclick=latenvallen(1)></td>
+			<td id=vakje22 onclick=latenvallen(2)></td>
+			<td id=vakje32 onclick=latenvallen(3)></td>
+			<td id=vakje42 onclick=latenvallen(4)></td>
+			<td id=vakje52 onclick=latenvallen(5)></td>
+			<td id=vakje62 onclick=latenvallen(6)></td>
+		</tr>
+		<tr>
+			<td id=vakje01 onclick=latenvallen(0)></td>
+			<td id=vakje11 onclick=latenvallen(1)></td>
+			<td id=vakje21 onclick=latenvallen(2)></td>
+			<td id=vakje31 onclick=latenvallen(3)></td>
+			<td id=vakje41 onclick=latenvallen(4)></td>
+			<td id=vakje51 onclick=latenvallen(5)></td>
+			<td id=vakje61 onclick=latenvallen(6)></td>
+		</tr>
+		<tr>
+			<td id=vakje00 onclick=latenvallen(0)></td>
+			<td id=vakje10 onclick=latenvallen(1)></td>
+			<td id=vakje20 onclick=latenvallen(2)></td>
+			<td id=vakje30 onclick=latenvallen(3)></td>
+			<td id=vakje40 onclick=latenvallen(4)></td>
+			<td id=vakje50 onclick=latenvallen(5)></td>
+			<td id=vakje60 onclick=latenvallen(6)></td>
+		</tr>
+	</table>
+</body>
+</html>
