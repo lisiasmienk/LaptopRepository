@@ -7,10 +7,9 @@
 	<title>Vier op 'n rij!</title>
 	<style>
 		td{
-			border:2px solid red;
+			border:2px solid blue;
 			width: 50px;
 			height: 50px;
-			color: white;
 		}
 	</style>
 	<script>
@@ -110,6 +109,48 @@
 		function nieuwSpel() {
 			location.reload();
         }
+
+		function oplichten(kolom){
+			console.log("Mouseover " + kolom);
+			for(var i=0; i<6; i++) {
+				vakjeOplichten(kolom, i);
+			}
+		}
+
+		function vakjeOplichten(kolom, rij){
+			var kleur =document.getElementById("vakje" + kolom + rij).style.backgroundColor;
+			console.log(kolom + rij + kleur);
+			if(kleur == 'red'){
+				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'pink';
+			} else if(kleur == 'yellow'){
+				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'orange';
+			} else {
+				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'grey';
+			}
+		}
+
+		function reset(kolom){
+			console.log("Mouseout " + kolom);
+			for(var i=0; i<6; i++){
+				vakjeReset(kolom, i);
+			}
+		}
+
+		function vakjeReset(kolom, rij){
+			var kleur = document.getElementById("vakje" + kolom + rij).style.backgroundColor;
+			console.log(kolom + rij + kleur);
+			if(kleur == 'yellow'){
+				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'yellow';
+			} else if(kleur == 'red'){
+				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'red';
+			} else if(kleur == 'pink'){
+				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'red';
+			} else if (kleur=='grey'){
+				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'white';
+			} else if(kleur=='orange'){
+				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'yellow';
+			}
+		}
 	</script>
 </head>
 
@@ -122,58 +163,60 @@
 	</p>
 	<table border=1>
 		<tr>
-			<td id=vakje05 onclick=latenvallen(0)></td>
-			<td id=vakje15 onclick=latenvallen(1)></td>
-			<td id=vakje25 onclick=latenvallen(2)></td>
-			<td id=vakje35 onclick=latenvallen(3)></td>
-			<td id=vakje45 onclick=latenvallen(4)></td>
-			<td id=vakje55 onclick=latenvallen(5)></td>
-			<td id=vakje65 onclick=latenvallen(6)></td>
+			<!--Bovenste rij-->
+			<td id=vakje05 onclick=latenvallen(0) onmouseover=oplichten(0) onmouseout=reset(0)></td>
+			<td id=vakje15 onclick=latenvallen(1) onmouseover=oplichten(1) onmouseout=reset(1)></td>
+			<td id=vakje25 onclick=latenvallen(2) onmouseover=oplichten(2) onmouseout=reset(2)></td>
+			<td id=vakje35 onclick=latenvallen(3) onmouseover=oplichten(3) onmouseout=reset(3)></td>
+			<td id=vakje45 onclick=latenvallen(4) onmouseover=oplichten(4) onmouseout=reset(4)></td>
+			<td id=vakje55 onclick=latenvallen(5) onmouseover=oplichten(5) onmouseout=reset(5)></td>
+			<td id=vakje65 onclick=latenvallen(6) onmouseover=oplichten(6) onmouseout=reset(6)></td>
 		</tr>
 		<tr>
-			<td id=vakje04 onclick=latenvallen(0)></td>
-			<td id=vakje14 onclick=latenvallen(1)></td>
-			<td id=vakje24 onclick=latenvallen(2)></td>
-			<td id=vakje34 onclick=latenvallen(3)></td>
-			<td id=vakje44 onclick=latenvallen(4)></td>
-			<td id=vakje54 onclick=latenvallen(5)></td>
-			<td id=vakje64 onclick=latenvallen(6)></td>
+			<td id=vakje04 onclick=latenvallen(0) onmouseover=oplichten(0) onmouseout=reset(0)></td>
+			<td id=vakje14 onclick=latenvallen(1) onmouseover=oplichten(1) onmouseout=reset(1)></td>
+			<td id=vakje24 onclick=latenvallen(2) onmouseover=oplichten(2) onmouseout=reset(2)></td>
+			<td id=vakje34 onclick=latenvallen(3) onmouseover=oplichten(3) onmouseout=reset(3)></td>
+			<td id=vakje44 onclick=latenvallen(4) onmouseover=oplichten(4) onmouseout=reset(4)></td>
+			<td id=vakje54 onclick=latenvallen(5) onmouseover=oplichten(5) onmouseout=reset(5)></td>
+			<td id=vakje64 onclick=latenvallen(6) onmouseover=oplichten(6) onmouseout=reset(6)></td>
 		</tr>
 		<tr>
-			<td id=vakje03 onclick=latenvallen(0)></td>
-			<td id=vakje13 onclick=latenvallen(1)></td>
-			<td id=vakje23 onclick=latenvallen(2)></td>
-			<td id=vakje33 onclick=latenvallen(3)></td>
-			<td id=vakje43 onclick=latenvallen(4)></td>
-			<td id=vakje53 onclick=latenvallen(5)></td>
-			<td id=vakje63 onclick=latenvallen(6)></td>
+			<td id=vakje03 onclick=latenvallen(0) onmouseover=oplichten(0) onmouseout=reset(0)></td>
+			<td id=vakje13 onclick=latenvallen(1) onmouseover=oplichten(1) onmouseout=reset(1)></td>
+			<td id=vakje23 onclick=latenvallen(2) onmouseover=oplichten(2) onmouseout=reset(2)></td>
+			<td id=vakje33 onclick=latenvallen(3) onmouseover=oplichten(3) onmouseout=reset(3)></td>
+			<td id=vakje43 onclick=latenvallen(4) onmouseover=oplichten(4) onmouseout=reset(4)></td>
+			<td id=vakje53 onclick=latenvallen(5) onmouseover=oplichten(5) onmouseout=reset(5)></td>
+			<td id=vakje63 onclick=latenvallen(6) onmouseover=oplichten(6) onmouseout=reset(6)></td>
 		</tr>
 		<tr>
-			<td id=vakje02 onclick=latenvallen(0)></td>
-			<td id=vakje12 onclick=latenvallen(1)></td>
-			<td id=vakje22 onclick=latenvallen(2)></td>
-			<td id=vakje32 onclick=latenvallen(3)></td>
-			<td id=vakje42 onclick=latenvallen(4)></td>
-			<td id=vakje52 onclick=latenvallen(5)></td>
-			<td id=vakje62 onclick=latenvallen(6)></td>
+			<td id=vakje02 onclick=latenvallen(0) onmouseover=oplichten(0) onmouseout=reset(0)></td>
+			<td id=vakje12 onclick=latenvallen(1) onmouseover=oplichten(1) onmouseout=reset(1)></td>
+			<td id=vakje22 onclick=latenvallen(2) onmouseover=oplichten(2) onmouseout=reset(2)></td>
+			<td id=vakje32 onclick=latenvallen(3) onmouseover=oplichten(3) onmouseout=reset(3)></td>
+			<td id=vakje42 onclick=latenvallen(4) onmouseover=oplichten(4) onmouseout=reset(4)></td>
+			<td id=vakje52 onclick=latenvallen(5) onmouseover=oplichten(5) onmouseout=reset(5)></td>
+			<td id=vakje62 onclick=latenvallen(6) onmouseover=oplichten(6) onmouseout=reset(6)></td>
 		</tr>
 		<tr>
-			<td id=vakje01 onclick=latenvallen(0)></td>
-			<td id=vakje11 onclick=latenvallen(1)></td>
-			<td id=vakje21 onclick=latenvallen(2)></td>
-			<td id=vakje31 onclick=latenvallen(3)></td>
-			<td id=vakje41 onclick=latenvallen(4)></td>
-			<td id=vakje51 onclick=latenvallen(5)></td>
-			<td id=vakje61 onclick=latenvallen(6)></td>
+			<td id=vakje01 onclick=latenvallen(0) onmouseover=oplichten(0) onmouseout=reset(0)></td>
+			<td id=vakje11 onclick=latenvallen(1) onmouseover=oplichten(1) onmouseout=reset(1)></td>
+			<td id=vakje21 onclick=latenvallen(2) onmouseover=oplichten(2) onmouseout=reset(2)></td>
+			<td id=vakje31 onclick=latenvallen(3) onmouseover=oplichten(3) onmouseout=reset(3)></td>
+			<td id=vakje41 onclick=latenvallen(4) onmouseover=oplichten(4) onmouseout=reset(4)></td>
+			<td id=vakje51 onclick=latenvallen(5) onmouseover=oplichten(5) onmouseout=reset(5)></td>
+			<td id=vakje61 onclick=latenvallen(6) onmouseover=oplichten(6) onmouseout=reset(6)></td>
 		</tr>
 		<tr>
-			<td id=vakje00 onclick=latenvallen(0)></td>
-			<td id=vakje10 onclick=latenvallen(1)></td>
-			<td id=vakje20 onclick=latenvallen(2)></td>
-			<td id=vakje30 onclick=latenvallen(3)></td>
-			<td id=vakje40 onclick=latenvallen(4)></td>
-			<td id=vakje50 onclick=latenvallen(5)></td>
-			<td id=vakje60 onclick=latenvallen(6)></td>
+			<!--Onderste rij-->
+			<td id=vakje00 onclick=latenvallen(0) onmouseover=oplichten(0) onmouseout=reset(0)></td>
+			<td id=vakje10 onclick=latenvallen(1) onmouseover=oplichten(1) onmouseout=reset(1)></td>
+			<td id=vakje20 onclick=latenvallen(2) onmouseover=oplichten(2) onmouseout=reset(2)></td>
+			<td id=vakje30 onclick=latenvallen(3) onmouseover=oplichten(3) onmouseout=reset(3)></td>
+			<td id=vakje40 onclick=latenvallen(4) onmouseover=oplichten(4) onmouseout=reset(4)></td>
+			<td id=vakje50 onclick=latenvallen(5) onmouseover=oplichten(5) onmouseout=reset(5)></td>
+			<td id=vakje60 onclick=latenvallen(6) onmouseover=oplichten(6) onmouseout=reset(6)></td>
 		</tr>
 	</table>
 
