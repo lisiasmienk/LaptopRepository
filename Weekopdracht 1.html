@@ -7,9 +7,13 @@
 	<title>Vier op 'n rij!</title>
 	<style>
 		td{
-			border:2px solid blue;
-			width: 50px;
-			height: 50px;
+			border:15px solid blue;
+			width: 40px;
+			height: 40px;
+		}
+		table{
+			border-collapse: collapse;
+			border: 40px solid blue;
 		}
 	</style>
 	<script>
@@ -111,7 +115,6 @@
         }
 
 		function oplichten(kolom){
-			console.log("Mouseover " + kolom);
 			for(var i=0; i<6; i++) {
 				vakjeOplichten(kolom, i);
 			}
@@ -119,7 +122,6 @@
 
 		function vakjeOplichten(kolom, rij){
 			var kleur =document.getElementById("vakje" + kolom + rij).style.backgroundColor;
-			console.log(kolom + rij + kleur);
 			if(kleur == 'red'){
 				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'pink';
 			} else if(kleur == 'yellow'){
@@ -130,7 +132,6 @@
 		}
 
 		function reset(kolom){
-			console.log("Mouseout " + kolom);
 			for(var i=0; i<6; i++){
 				vakjeReset(kolom, i);
 			}
@@ -138,7 +139,6 @@
 
 		function vakjeReset(kolom, rij){
 			var kleur = document.getElementById("vakje" + kolom + rij).style.backgroundColor;
-			console.log(kolom + rij + kleur);
 			if(kleur == 'yellow'){
 				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'yellow';
 			} else if(kleur == 'red'){
