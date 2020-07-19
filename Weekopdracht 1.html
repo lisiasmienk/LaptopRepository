@@ -28,19 +28,21 @@
 	</style>
 	<script>
 		var rij = [0,0,0,0,0,0,0]; //want tellen vanaf 0
-		var color = 'yellow';
+		var color;
 		var spelActief = true;
+
 		function latenvallen(kolom) {
 			console.log(spelActief);
 			if (spelActief) {
+				reset(kolom);
 				if (spelActief && rij[kolom] < 6) {
+					document.getElementById("vakje" + kolom + "" + rij[kolom]).style.backgroundColor = color;
+					gewonnen(color, kolom, rij[kolom])
 					if (color == 'red') {
 						color = 'yellow';
 					} else {
 						color = 'red';
 					}
-					document.getElementById("vakje" + kolom + "" + rij[kolom]).style.backgroundColor = color;
-					gewonnen(color, kolom, rij[kolom])
 					rij[kolom]++;
 				}
 			} else {
@@ -169,10 +171,12 @@
 				document.getElementById("startRed").style.border = "2px solid black";
 				document.getElementById("startYellow").style.border = "2px solid yellow";
 				console.log("rood geklikt")
+				color = 'red';
 			} else {
 				document.getElementById("startYellow").style.border = "2px solid black";
 				document.getElementById("startRed").style.border = "2px solid red";
 				console.log("geel geklikt");
+				color = 'yellow';
 			}
 		}
 	</script>
