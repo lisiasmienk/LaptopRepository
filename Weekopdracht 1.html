@@ -31,23 +31,25 @@
 		var color;
 		var spelActief = true;
 
+
 		function latenvallen(kolom) {
-			console.log(spelActief);
-			if (spelActief) {
-				reset(kolom);
-				if (spelActief && rij[kolom] < 6) {
-					document.getElementById("vakje" + kolom + "" + rij[kolom]).style.backgroundColor = color;
-					gewonnen(color, kolom, rij[kolom])
-					if (color == 'red') {
-						color = 'yellow';
-					} else {
-						color = 'red';
+			if(inputvolledig()){
+				if (spelActief) {
+					reset(kolom);
+					if (spelActief && rij[kolom] < 6) {
+						document.getElementById("vakje" + kolom + "" + rij[kolom]).style.backgroundColor = color;
+						gewonnen(color, kolom, rij[kolom])
+						if (color == 'red') {
+							color = 'yellow';
+						} else {
+							color = 'red';
+						}
+						rij[kolom]++;
 					}
-					rij[kolom]++;
-				}
-			} else {
-				alert("Als je verder wilt spelen, moet je een nieuwe spel starten.")
-            }
+				} else {
+					alert("Als je verder wilt spelen, moet je een nieuwe spel starten.");
+           		}
+			}
 		}
 
 		function gewonnen(color, kolom, rij) {
@@ -60,6 +62,7 @@
 				}
 				document.getElementById("winst").innerText = naam + " heeft gewonnen!";
                 spelActief = false;
+				console.log("was het hier?");
 			}
 		}
 
@@ -176,14 +179,25 @@
 			if(speler == 0){
 				document.getElementById("startRed").style.border = "2px solid black";
 				document.getElementById("startYellow").style.border = "2px solid yellow";
-				console.log("rood geklikt")
 				color = 'red';
 			} else {
 				document.getElementById("startYellow").style.border = "2px solid black";
 				document.getElementById("startRed").style.border = "2px solid red";
-				console.log("geel geklikt");
 				color = 'yellow';
 			}
+		}
+
+		function inputvolledig(){
+			if(document.getElementById("redName").value == "" || document.getElementById("yellowName").value == ""){
+				alert("Vul alsjeblieft twee namen in");
+				return false;
+			} else {
+				if(document.getElementById("startRed").style.borderColor == 'red' && document.getElementById("startYellow").style.borderColor == 'yellow'){
+					alert("Selecteer welke kleur mag beginnen");
+					return false;
+				}
+			}
+			return true;
 		}
 	</script>
 </head>
@@ -192,13 +206,12 @@
 	<h1>
 		Vier op 'n rij!
 	</h1>
-	<label>Voer je naam in.</label><br>
-	<div class="square" style="background-color:red"></div><input type="text" id="redName"><br>
-	<div class="square" style="background-color:yellow"></div><input type="text" id="yellowName"><br><br>
+	<label>Wie speelt met welke kleur?</label><br>
+	<div class="square" style="background-color:red; border:2px red"></div><input type="text" id="redName"><br>
+	<div class="square" style="background-color:yellow; border:2px yellow"></div><input type="text" id="yellowName"><br><br>
 	<label>Wie mag beginnen?</label><br>
-	<div class="square" id="startRed" style="background-color:red" onclick=startspeler(0)></div>
-	<div class="square" id="startYellow" style="background-color:yellow" onclick=startspeler(1)></div>
-	
+	<div class="square" id="startRed" style="background-color:red; border:2px red" onclick=startspeler(0)></div>
+	<div class="square" id="startYellow" style="background-color:yellow; border:2px yellow" onclick=startspeler(1)></div>
 	<br><br>
 	
 	<table border=1>
