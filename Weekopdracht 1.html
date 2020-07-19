@@ -62,7 +62,6 @@
 				}
 				document.getElementById("winst").innerText = naam + " heeft gewonnen!";
                 spelActief = false;
-				console.log("was het hier?");
 			}
 		}
 
@@ -134,30 +133,38 @@
         }
 
 		function oplichten(kolom){
-			console.log("voor oplichten " + document.getElementById("vakje00").style.backgroundColor);
+			console.log("Mouse over start " + kolom);
 			for(var i=0; i<6; i++) {
 				vakjeOplichten(kolom, i);
 			}
-			console.log("na oplichten " + document.getElementById("vakje00").style.backgroundColor);
+			console.log("Mouse over eind " + kolom);
 		}
 
 		function vakjeOplichten(kolom, rij){
-			var kleur =document.getElementById("vakje" + kolom + rij).style.backgroundColor;
-			if(kleur == 'red'){
-				document.getElementById("vakje" + kolom + rij).style.backgroundColor = '#ff6666';
-			} else if(kleur == 'yellow'){
-				document.getElementById("vakje" + kolom + rij).style.backgroundColor = '#ffff99';
-			} else {
-				document.getElementById("vakje" + kolom + rij).style.backgroundColor = '#bfbfbf'; //grey
+			if(this.rij[kolom] < 6){
+				var kleur =document.getElementById("vakje" + kolom + rij).style.backgroundColor;
+				if(rij == this.rij[kolom]){
+					if(color == 'red'){
+						document.getElementById("vakje" + kolom + rij).style.backgroundColor = '#cc0000'; //darker red
+					} else if(color == 'yellow'){
+						document.getElementById("vakje" + kolom + rij).style.backgroundColor = '#cccc00'; //darker yellow
+					}
+				} else if(kleur == 'red'){
+					document.getElementById("vakje" + kolom + rij).style.backgroundColor = '#ff6666'; //lighter red
+				} else if(kleur == 'yellow'){
+					document.getElementById("vakje" + kolom + rij).style.backgroundColor = '#ffff99'; //lighter yellow
+				} else {
+					document.getElementById("vakje" + kolom + rij).style.backgroundColor = '#bfbfbf'; //grey
+				}
 			}
 		}
 
 		function reset(kolom){
-			console.log("voor reset " + document.getElementById("vakje00").style.backgroundColor);
+			console.log("Mouse out start " + kolom);
 			for(var i=0; i<6; i++){
 				vakjeReset(kolom, i);
 			}
-			console.log("na reset " + document.getElementById("vakje00").style.backgroundColor);
+			console.log("Mouse out eind " + kolom);
 		}
 
 		function vakjeReset(kolom, rij){
@@ -167,9 +174,8 @@
 			} else if(kleur == 'red'){
 				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'red';
 			} else if(kleur == 'rgb(255, 102, 102)'){
-				console.log("komt het hier?");
 				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'red';
-			} else if (kleur=='rgb(191, 191, 191)'){
+			} else if (kleur=='rgb(191, 191, 191)' || kleur == 'rgb(204, 0, 0)' || kleur == 'rgb(204, 204, 0)'){
 				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'white';
 			} else if(kleur=='rgb(255, 255, 153)'){
 				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'yellow';
