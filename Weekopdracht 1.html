@@ -15,6 +15,16 @@
 			border-collapse: collapse;
 			border: 40px solid blue;
 		}
+		.square{
+			float: left;
+			height: 20px;
+			width: 20px;
+			margin-right: 15px;
+			margin-top: 5px;
+		}
+		input{
+			margin-top: 5px;
+		}
 	</style>
 	<script>
 		var rij = [0,0,0,0,0,0,0]; //want tellen vanaf 0
@@ -149,6 +159,22 @@
 				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'yellow';
 			}
 		}
+
+		function startspeler(speler){
+			document.getElementById("startYellow").style.height = "16px";
+			document.getElementById("startYellow").style.width = "16px";
+			document.getElementById("startRed").style.height = "16px";
+			document.getElementById("startRed").style.width = "16px";
+			if(speler == 0){
+				document.getElementById("startRed").style.border = "2px solid black";
+				document.getElementById("startYellow").style.border = "2px solid yellow";
+				console.log("rood geklikt")
+			} else {
+				document.getElementById("startYellow").style.border = "2px solid black";
+				document.getElementById("startRed").style.border = "2px solid red";
+				console.log("geel geklikt");
+			}
+		}
 	</script>
 </head>
 
@@ -156,9 +182,15 @@
 	<h1>
 		Vier op 'n rij!
 	</h1>
-	<p>
-		Startspeler begint met rood.
-	</p>
+	<label>Voer je naam in.</label><br>
+	<div class="square" style="background-color:red"></div><input type="text" id="redName"><br>
+	<div class="square" style="background-color:yellow"></div><input type="text" id="yellowName"><br><br>
+	<label>Wie mag beginnen?</label><br>
+	<div class="square" id="startRed" style="background-color:red" onclick=startspeler(0)></div>
+	<div class="square" id="startYellow" style="background-color:yellow" onclick=startspeler(1)></div>
+	
+	<br><br>
+	
 	<table border=1>
 		<tr>
 			<!--Bovenste rij-->
