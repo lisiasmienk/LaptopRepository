@@ -134,26 +134,30 @@
         }
 
 		function oplichten(kolom){
+			console.log("voor oplichten " + document.getElementById("vakje00").style.backgroundColor);
 			for(var i=0; i<6; i++) {
 				vakjeOplichten(kolom, i);
 			}
+			console.log("na oplichten " + document.getElementById("vakje00").style.backgroundColor);
 		}
 
 		function vakjeOplichten(kolom, rij){
 			var kleur =document.getElementById("vakje" + kolom + rij).style.backgroundColor;
 			if(kleur == 'red'){
-				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'pink';
+				document.getElementById("vakje" + kolom + rij).style.backgroundColor = '#ff6666';
 			} else if(kleur == 'yellow'){
-				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'orange';
+				document.getElementById("vakje" + kolom + rij).style.backgroundColor = '#ffff99';
 			} else {
-				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'grey';
+				document.getElementById("vakje" + kolom + rij).style.backgroundColor = '#bfbfbf'; //grey
 			}
 		}
 
 		function reset(kolom){
+			console.log("voor reset " + document.getElementById("vakje00").style.backgroundColor);
 			for(var i=0; i<6; i++){
 				vakjeReset(kolom, i);
 			}
+			console.log("na reset " + document.getElementById("vakje00").style.backgroundColor);
 		}
 
 		function vakjeReset(kolom, rij){
@@ -162,11 +166,12 @@
 				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'yellow';
 			} else if(kleur == 'red'){
 				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'red';
-			} else if(kleur == 'pink'){
+			} else if(kleur == 'rgb(255, 102, 102)'){
+				console.log("komt het hier?");
 				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'red';
-			} else if (kleur=='grey'){
+			} else if (kleur=='rgb(191, 191, 191)'){
 				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'white';
-			} else if(kleur=='orange'){
+			} else if(kleur=='rgb(255, 255, 153)'){
 				document.getElementById("vakje" + kolom + rij).style.backgroundColor = 'yellow';
 			}
 		}
