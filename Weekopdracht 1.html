@@ -52,7 +52,13 @@
 
 		function gewonnen(color, kolom, rij) {
 			if (aantalVertikaal(color, kolom, rij) == 4 || aantalHorizontaal(color, kolom, rij) == 4 || aantalDiagonaalOmhoog(color, kolom, rij) == 4 || aantalDiagonaalOmlaag(color, kolom, rij) == 4) {
-				document.getElementById("winst").innerText = "Je hebt gewonnen!";
+				var naam;
+				if(color == 'red'){
+					naam = document.getElementById("redName").value;
+				} else {
+					naam = document.getElementById("yellowName").value;
+				}
+				document.getElementById("winst").innerText = naam + " heeft gewonnen!";
                 spelActief = false;
 			}
 		}
