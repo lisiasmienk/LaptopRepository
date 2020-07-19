@@ -28,7 +28,7 @@
 	</style>
 	<script>
 		var rij = [0,0,0,0,0,0,0]; //want tellen vanaf 0
-		var color;
+		var color = '#bfbfbf';
 		var spelActief = true;
 
 
@@ -37,18 +37,35 @@
 				if (spelActief) {
 					reset(kolom);
 					if (spelActief && rij[kolom] < 6) {
-						document.getElementById("vakje" + kolom + "" + rij[kolom]).style.backgroundColor = color;
-						gewonnen(color, kolom, rij[kolom])
-						if (color == 'red') {
-							color = 'yellow';
-						} else {
-							color = 'red';
+						var counter = -1;
+						var vallendekleur = color;
+						for(let i=5; i>this.rij[kolom]-1; i--){
+							counter ++;
+							window.setTimeout(function() {valanimatie(kolom, i, vallendekleur)}, 200*counter);
 						}
+						gewonnen(color, kolom, rij[kolom])
+						changeColor();
 						rij[kolom]++;
 					}
 				} else {
 					alert("Als je verder wilt spelen, moet je een nieuwe spel starten.");
            		}
+			}
+		}
+
+		function changeColor(){
+			if (color == 'red') {
+				color = 'yellow';
+			} else {
+				color = 'red';
+			}
+		}
+
+		function valanimatie(kolom, rij, kleur){
+			document.getElementById("vakje" + kolom + rij).style.backgroundColor = kleur;
+			if(rij < 5){
+				var vorigerij = rij+1;
+				document.getElementById("vakje" + kolom + vorigerij).style.backgroundColor = 'white';
 			}
 		}
 
@@ -142,12 +159,14 @@
 
 		function vakjeOplichten(kolom, rij){
 			if(this.rij[kolom] < 6){
-				var kleur =document.getElementById("vakje" + kolom + rij).style.backgroundColor;
+				var kleur = document.getElementById("vakje" + kolom + rij).style.backgroundColor;
 				if(rij == this.rij[kolom]){
 					if(color == 'red'){
 						document.getElementById("vakje" + kolom + rij).style.backgroundColor = '#cc0000'; //darker red
 					} else if(color == 'yellow'){
 						document.getElementById("vakje" + kolom + rij).style.backgroundColor = '#cccc00'; //darker yellow
+					} else {
+						document.getElementById("vakje" + kolom + rij).style.backgroundColor = '#bfbfbf'; //grey
 					}
 				} else if(kleur == 'red'){
 					document.getElementById("vakje" + kolom + rij).style.backgroundColor = '#ff6666'; //lighter red
